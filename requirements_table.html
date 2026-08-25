@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Requirements Table — Customizable Subscription Box Scheduler</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 40px 50px;
+      line-height: 1.5;
+    }
+
+    @media print {
+      body { padding: 20px 30px; }
+      @page { margin: 1.5cm; size: A4 landscape; }
+      .no-print { display: none; }
+    }
+
+    h1 {
+      font-size: 18pt;
+      font-weight: 700;
+      color: #1a237e;
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      font-size: 14pt;
+      font-weight: 700;
+      color: #283593;
+      margin-top: 28px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #c5cae9;
+      padding-bottom: 4px;
+    }
+
+    .subtitle {
+      font-size: 11pt;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .meta {
+      font-size: 10pt;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .meta strong {
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 10pt;
+    }
+
+    thead th {
+      background: #1a237e;
+      color: #fff;
+      font-weight: 600;
+      padding: 10px 12px;
+      text-align: left;
+      border: 1px solid #1a237e;
+    }
+
+    tbody td {
+      padding: 9px 12px;
+      border: 1px solid #ccc;
+      vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f5f7ff;
+    }
+
+    tbody tr:hover {
+      background: #e8eaf6;
+    }
+
+    td:first-child {
+      font-weight: 700;
+      white-space: nowrap;
+      color: #1a237e;
+      width: 70px;
+    }
+
+    .pass { color: #2e7d32; font-weight: 600; }
+    .fail { color: #c62828; font-weight: 600; }
+
+    .print-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 28px;
+      background: #1a237e;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 12pt;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .print-btn:hover {
+      background: #283593;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 24px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Customizable Subscription Box Scheduler</h1>
+  <p class="subtitle">Problem Statement #35 | Retail, E-Commerce &amp; Finance</p>
+  <p class="meta">
+    A subscription box portal where subscribers customize monthly product selections (e.g., books, coffee, snacks) based on preference tags, with support for pausing or skipping billing cycles.<br>
+    <strong>Target Stakeholders / Actors:</strong> Subscriber, Fulfillment Lead
+  </p>
+
+  <hr>
+
+  <h2>Functional Requirements</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Acceptance Criteria</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FR-001</td>
+        <td>The system shall allow subscribers to swap monthly box items or pause deliveries up to 48 hours prior to the monthly billing renewal date.</td>
+        <td>High</td>
+        <td><span class="pass">Pass:</span> Selection updated and fulfillment manifest refreshed within 5 seconds.<br><span class="fail">Fail:</span> Customization locked out prematurely (before 48-hour window).</td>
+        <td>Subscribers need flexibility to adjust their box contents based on changing preferences, reducing cancellations and improving satisfaction. The 48-hour cutoff gives the fulfillment team enough lead time to process orders.</td>
+      </tr>
+      <tr>
+        <td>FR-002</td>
+        <td>The system shall allow subscribers to set and update preference tags (e.g., "vegan", "dark roast", "mystery fiction") that drive personalized product recommendations for their monthly box.</td>
+        <td>High</td>
+        <td><span class="pass">Pass:</span> Preference tags saved successfully and the recommended product list updates to reflect the new tags on the next page load.<br><span class="fail">Fail:</span> Tags not persisted or recommendations unchanged despite tag updates.</td>
+        <td>Tag-based personalization is the core value proposition of the platform. Accurate preference matching increases subscriber retention and reduces product return rates.</td>
+      </tr>
+      <tr>
+        <td>FR-003</td>
+        <td>The system shall allow subscribers to skip an upcoming billing cycle without cancelling their subscription, and automatically resume the subscription in the following cycle.</td>
+        <td>Medium</td>
+        <td><span class="pass">Pass:</span> Billing skipped for the selected cycle, no charge applied, subscription status shows "Skipped", and auto-resumes next cycle.<br><span class="fail">Fail:</span> Subscriber charged despite skipping, or subscription does not resume automatically.</td>
+        <td>Allowing skips prevents full cancellations when subscribers temporarily do not need a box (e.g., travel, budget constraints), directly improving long-term retention rates.</td>
+      </tr>
+      <tr>
+        <td>FR-004</td>
+        <td>The system shall enable the Fulfillment Lead to view, filter, and export the monthly fulfillment manifest containing subscriber names, shipping addresses, and customized box contents.</td>
+        <td>High</td>
+        <td><span class="pass">Pass:</span> Fulfillment manifest displays all active orders for the billing cycle with correct item lists, supports filtering by region/product category, and can be exported as CSV/PDF.<br><span class="fail">Fail:</span> Manifest has missing or incorrect entries, or export fails/produces a corrupted file.</td>
+        <td>The Fulfillment Lead requires an accurate, exportable manifest to coordinate with warehouse and shipping partners. Errors here lead to wrong shipments and increased operational costs.</td>
+      </tr>
+      <tr>
+        <td>FR-005</td>
+        <td>The system shall send email and in-app notifications to subscribers at least 72 hours before the billing renewal date, reminding them of the upcoming charge and their current box contents with an option to customize.</td>
+        <td>Medium</td>
+        <td><span class="pass">Pass:</span> Notification delivered via both email and in-app channels exactly 72 hours before renewal, containing correct box summary and a working link to the customization page.<br><span class="fail">Fail:</span> Notification not sent, sent late (&lt; 48 hours before renewal), or contains incorrect box details.</td>
+        <td>Timely reminders reduce involuntary churn from unexpected charges and encourage active customization. The 72-hour window precedes the 48-hour customization cutoff from FR-001, giving subscribers ample time.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Non-Functional Requirements</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Acceptance Criteria</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>NFR-001</td>
+        <td>Performance &amp; Security</td>
+        <td>The fulfillment manifest generator must export shipping labels for 10,000 monthly boxes in under 1 minute. All exported data must be transmitted over TLS 1.2+ and access restricted to authenticated Fulfillment Lead accounts only.</td>
+        <td>High</td>
+        <td><span class="pass">Pass:</span> Benchmarking tests confirm manifest generation for 10,000 entries completes in ≤ 60 seconds under simulated peak load, all API calls use HTTPS/TLS 1.2+, and unauthorized access attempts return HTTP 403.<br><span class="fail">Fail:</span> Generation exceeds 60 seconds, data transmitted over unencrypted channels, or unauthorized users can access the manifest.</td>
+        <td>The platform must handle a growing subscriber base without degrading the fulfillment workflow. Shipping data contains PII (names, addresses), so performance must not come at the expense of security.</td>
+      </tr>
+      <tr>
+        <td>NFR-002</td>
+        <td>Availability &amp; Scalability</td>
+        <td>The subscription management portal shall maintain 99.9% uptime on a monthly basis and support horizontal scaling to handle up to 50,000 concurrent subscriber sessions during peak customization windows (48–72 hours before billing renewal).</td>
+        <td>High</td>
+        <td><span class="pass">Pass:</span> Monitoring reports confirm ≥ 99.9% uptime over 3 consecutive months, and load tests demonstrate stable response times (&lt; 2 seconds per page) with 50,000 simulated concurrent users.<br><span class="fail">Fail:</span> Monthly uptime falls below 99.9%, or response times exceed 5 seconds under peak simulated load.</td>
+        <td>The 48-hour customization window creates predictable traffic spikes. System downtime during this critical period directly causes lost customization opportunities and subscriber frustration.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="no-print" style="text-align:center; margin-top: 30px;">
+    <button class="print-btn" onclick="window.print()">📄 Save as PDF (Ctrl+P)</button>
+  </div>
+
+</body>
+</html>

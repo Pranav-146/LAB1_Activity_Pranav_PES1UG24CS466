@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Use-Case Flow Specification — Customize Monthly Box</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      color: #1a1a1a;
+      background: #fff;
+      padding: 40px 50px;
+      line-height: 1.55;
+    }
+
+    @media print {
+      body { padding: 20px 30px; }
+      @page { margin: 1.5cm; size: A4 portrait; }
+      .no-print { display: none; }
+    }
+
+    h1 {
+      font-size: 18pt;
+      font-weight: 700;
+      color: #1a237e;
+      margin-bottom: 4px;
+    }
+
+    h2 {
+      font-size: 13pt;
+      font-weight: 700;
+      color: #283593;
+      margin-top: 22px;
+      margin-bottom: 8px;
+      border-bottom: 2px solid #c5cae9;
+      padding-bottom: 3px;
+    }
+
+    h3 {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #37474f;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 11pt;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      font-size: 10pt;
+    }
+
+    thead th {
+      background: #1a237e;
+      color: #fff;
+      font-weight: 600;
+      padding: 8px 12px;
+      text-align: left;
+      border: 1px solid #1a237e;
+    }
+
+    tbody td {
+      padding: 7px 12px;
+      border: 1px solid #ccc;
+      vertical-align: top;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f5f7ff;
+    }
+
+    .meta-table {
+      width: auto;
+      min-width: 550px;
+    }
+
+    .meta-table td:first-child {
+      font-weight: 700;
+      color: #1a237e;
+      white-space: nowrap;
+      width: 180px;
+      background: #f5f7ff;
+    }
+
+    ol, ul {
+      margin-left: 22px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e0e0e0;
+      margin: 20px 0;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: #1a237e;
+      white-space: nowrap;
+      width: 50px;
+    }
+
+    .actor-col {
+      white-space: nowrap;
+      width: 90px;
+      font-weight: 600;
+    }
+
+    .alt-header {
+      background: #fff3e0 !important;
+    }
+
+    .alt-header td {
+      font-weight: 700;
+      color: #e65100;
+    }
+
+    .exc-id {
+      font-weight: 700;
+      color: #c62828;
+      white-space: nowrap;
+      width: 40px;
+    }
+
+    .print-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 28px;
+      background: #1a237e;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 12pt;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .print-btn:hover { background: #283593; }
+  </style>
+</head>
+<body>
+
+  <h1>Use-Case Flow Specification</h1>
+  <p class="subtitle">Use Case: Customize Monthly Box</p>
+
+  <table class="meta-table">
+    <tbody>
+      <tr><td>Use Case ID</td><td>UC-002</td></tr>
+      <tr><td>Use Case Name</td><td>Customize Monthly Box</td></tr>
+      <tr><td>Primary Actor</td><td>Subscriber</td></tr>
+      <tr><td>Secondary Actor(s)</td><td>System (Recommendation Engine, Fulfillment Service)</td></tr>
+      <tr><td>Related Requirements</td><td>FR-001, FR-002, FR-005</td></tr>
+      <tr><td>Description</td><td>Allows a subscriber to swap, add, or remove items in their upcoming monthly subscription box based on personal preferences, provided the customization window is still open (≥ 48 hours before billing renewal).</td></tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Preconditions</h2>
+  <ol>
+    <li>The subscriber is registered and has an active (non-cancelled) subscription.</li>
+    <li>The subscriber is authenticated and logged into the portal.</li>
+    <li>The next billing cycle is scheduled, and the current date/time is <strong>at least 48 hours before</strong> the monthly billing renewal date.</li>
+    <li>A default box has been generated for the upcoming cycle based on the subscriber's preference tags.</li>
+  </ol>
+
+  <h2>Postconditions</h2>
+  <ol>
+    <li>The subscriber's monthly box contents are updated to reflect the new selections.</li>
+    <li>The fulfillment manifest is refreshed to include the updated item list for this subscriber.</li>
+    <li>A confirmation notification (email + in-app) is sent to the subscriber summarizing the changes.</li>
+    <li>The inventory count for swapped-out items is restored and swapped-in items are reserved.</li>
+  </ol>
+
+  <hr>
+
+  <h2>Main Success Scenario</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Step</th>
+        <th>Actor</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="step-num">1</td>
+        <td class="actor-col">Subscriber</td>
+        <td>Navigates to the "My Upcoming Box" page from the dashboard.</td>
+      </tr>
+      <tr>
+        <td class="step-num">2</td>
+        <td class="actor-col">System</td>
+        <td><strong>«include» Validate Customization Window:</strong> Checks that the current time is ≥ 48 hours before the billing renewal date. Validation passes.</td>
+      </tr>
+      <tr>
+        <td class="step-num">3</td>
+        <td class="actor-col">System</td>
+        <td><strong>«include» Apply Preference-Based Recommendations:</strong> Loads the current box contents alongside personalized product recommendations based on the subscriber's preference tags.</td>
+      </tr>
+      <tr>
+        <td class="step-num">4</td>
+        <td class="actor-col">System</td>
+        <td>Displays the current box items, available alternative products (with preference-match scores), and the customization deadline.</td>
+      </tr>
+      <tr>
+        <td class="step-num">5</td>
+        <td class="actor-col">Subscriber</td>
+        <td>Reviews the current box and selects one or more items to swap. For each swap, the subscriber picks a replacement from the recommended alternatives or browses the full catalog.</td>
+      </tr>
+      <tr>
+        <td class="step-num">6</td>
+        <td class="actor-col">System</td>
+        <td>For each swap request, validates that the replacement item is in stock and compatible with the subscriber's subscription tier.</td>
+      </tr>
+      <tr>
+        <td class="step-num">7</td>
+        <td class="actor-col">System</td>
+        <td>Updates the box preview in real time showing the new item(s), adjusted box summary, and any price difference (if applicable).</td>
+      </tr>
+      <tr>
+        <td class="step-num">8</td>
+        <td class="actor-col">Subscriber</td>
+        <td>Reviews the updated box preview and confirms the changes by clicking "Save My Box."</td>
+      </tr>
+      <tr>
+        <td class="step-num">9</td>
+        <td class="actor-col">System</td>
+        <td>Persists the updated box selections to the database. Releases inventory hold on removed items and reserves inventory for the newly selected items.</td>
+      </tr>
+      <tr>
+        <td class="step-num">10</td>
+        <td class="actor-col">System</td>
+        <td>Refreshes the fulfillment manifest for the current billing cycle to reflect the subscriber's updated box contents.</td>
+      </tr>
+      <tr>
+        <td class="step-num">11</td>
+        <td class="actor-col">System</td>
+        <td>Sends a confirmation notification (email + in-app) to the subscriber with the finalized box summary and expected delivery date.</td>
+      </tr>
+      <tr>
+        <td class="step-num">12</td>
+        <td class="actor-col">System</td>
+        <td>Displays a success message: "Your box has been updated successfully!"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Alternate Flow: Customization Window Closed</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Step</th>
+        <th>Actor</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="step-num">2a</td>
+        <td class="actor-col">System</td>
+        <td>At Step 2, the system determines that the current time is <strong>less than 48 hours</strong> before the billing renewal date. The customization window has closed.</td>
+      </tr>
+      <tr>
+        <td class="step-num">2b</td>
+        <td class="actor-col">System</td>
+        <td>Displays a message: "The customization window for this cycle has closed. Your current box will be shipped as-is. You can still customize your next month's box after the current cycle renews."</td>
+      </tr>
+      <tr>
+        <td class="step-num">2c</td>
+        <td class="actor-col">System</td>
+        <td>Shows the current (locked) box contents in read-only mode, along with the date when customization for the next cycle will open.</td>
+      </tr>
+      <tr>
+        <td class="step-num">2d</td>
+        <td class="actor-col">Subscriber</td>
+        <td>Acknowledges the message. May choose to navigate to subscription settings to skip the current cycle (if skip window is also still open), or simply exit.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Exceptions</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Condition</th>
+        <th>System Response</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="exc-id">E1</td>
+        <td>Selected replacement item is out of stock.</td>
+        <td>System displays "This item is currently unavailable" and suggests the next-best alternative from the recommendation engine.</td>
+      </tr>
+      <tr>
+        <td class="exc-id">E2</td>
+        <td>Database or network error during save.</td>
+        <td>System displays "We couldn't save your changes. Please try again." Changes are rolled back; inventory holds are not modified.</td>
+      </tr>
+      <tr>
+        <td class="exc-id">E3</td>
+        <td>Session expires during customization.</td>
+        <td>System redirects to the login page. Unsaved changes are stored temporarily and restored upon re-authentication.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+
+  <h2>Business Rules</h2>
+  <ul>
+    <li><strong>BR-01:</strong> A subscriber may customize their box an unlimited number of times within the customization window. Only the final saved state is sent to fulfillment.</li>
+    <li><strong>BR-02:</strong> The customization window opens immediately after the previous cycle's billing renewal and closes 48 hours before the next renewal.</li>
+    <li><strong>BR-03:</strong> Price differences from item swaps (e.g., premium items) are reflected as add-on charges or credits on the next billing statement.</li>
+  </ul>
+
+  <div class="no-print" style="text-align:center; margin-top: 30px;">
+    <button class="print-btn" onclick="window.print()">📄 Save as PDF (Ctrl+P)</button>
+  </div>
+
+</body>
+</html>

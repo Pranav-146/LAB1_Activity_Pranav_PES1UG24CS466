@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UML Use-Case Diagram — Subscription Box Scheduler</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 14pt;
+      margin-bottom: 20px;
+      color: #1a1a1a;
+    }
+
+    .diagram-container {
+      position: relative;
+      width: 1100px;
+      height: 720px;
+    }
+
+    /* System Boundary */
+    .system-boundary {
+      position: absolute;
+      left: 160px;
+      top: 0;
+      width: 780px;
+      height: 720px;
+      border: 2px solid #222;
+      border-radius: 8px;
+      background: #fafafa;
+    }
+
+    .system-title {
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14pt;
+      font-weight: 700;
+      color: #1a237e;
+      white-space: nowrap;
+    }
+
+    /* Actor */
+    .actor {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .actor .stick-figure {
+      width: 50px;
+      height: 70px;
+    }
+
+    .actor .actor-name {
+      margin-top: 4px;
+      font-size: 11pt;
+      font-weight: 700;
+      color: #222;
+      text-align: center;
+    }
+
+    /* Use Case Oval */
+    .use-case {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border: 2px solid #333;
+      border-radius: 50%;
+      background: #fff;
+      font-size: 9.5pt;
+      font-weight: 500;
+      color: #222;
+      padding: 8px 14px;
+      z-index: 5;
+    }
+
+    /* SVG lines overlay */
+    .lines-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .solid-line {
+      stroke: #333;
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .dashed-line {
+      stroke: #333;
+      stroke-width: 1.5;
+      stroke-dasharray: 7, 4;
+      fill: none;
+    }
+
+    .arrow-head {
+      fill: #333;
+    }
+
+    .label-bg {
+      fill: #fafafa;
+    }
+
+    .rel-label {
+      font-size: 9pt;
+      font-style: italic;
+      fill: #333;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    .no-print {
+      margin-top: 24px;
+    }
+
+    .print-btn {
+      padding: 10px 28px;
+      background: #1a237e;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 12pt;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .print-btn:hover { background: #283593; }
+
+    @media print {
+      .no-print { display: none; }
+      @page { margin: 1cm; size: A4 landscape; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>UML Use-Case Diagram — Customizable Subscription Box Scheduler</h1>
+
+<div class="diagram-container">
+
+  <!-- System Boundary -->
+  <div class="system-boundary">
+    <span class="system-title">Customizable Subscription Box Scheduler</span>
+  </div>
+
+  <!-- ===== ACTORS ===== -->
+
+  <!-- Subscriber (left) -->
+  <div class="actor" style="left: 30px; top: 280px;">
+    <svg class="stick-figure" viewBox="0 0 50 70">
+      <circle cx="25" cy="10" r="8" stroke="#222" stroke-width="2" fill="none"/>
+      <line x1="25" y1="18" x2="25" y2="45" stroke="#222" stroke-width="2"/>
+      <line x1="8" y1="30" x2="42" y2="30" stroke="#222" stroke-width="2"/>
+      <line x1="25" y1="45" x2="10" y2="65" stroke="#222" stroke-width="2"/>
+      <line x1="25" y1="45" x2="40" y2="65" stroke="#222" stroke-width="2"/>
+    </svg>
+    <span class="actor-name">Subscriber</span>
+  </div>
+
+  <!-- Fulfillment Lead (right) -->
+  <div class="actor" style="right: 30px; top: 280px;">
+    <svg class="stick-figure" viewBox="0 0 50 70">
+      <circle cx="25" cy="10" r="8" stroke="#222" stroke-width="2" fill="none"/>
+      <line x1="25" y1="18" x2="25" y2="45" stroke="#222" stroke-width="2"/>
+      <line x1="8" y1="30" x2="42" y2="30" stroke="#222" stroke-width="2"/>
+      <line x1="25" y1="45" x2="10" y2="65" stroke="#222" stroke-width="2"/>
+      <line x1="25" y1="45" x2="40" y2="65" stroke="#222" stroke-width="2"/>
+    </svg>
+    <span class="actor-name">Fulfillment Lead</span>
+  </div>
+
+  <!-- ===== USE CASES ===== -->
+
+  <!-- Subscriber use cases (left column) -->
+  <div class="use-case" style="left: 200px; top: 55px; width: 200px; height: 60px;">
+    Manage Preference Tags
+  </div>
+
+  <div class="use-case" style="left: 200px; top: 165px; width: 200px; height: 60px;">
+    Customize Monthly Box
+  </div>
+
+  <div class="use-case" style="left: 200px; top: 280px; width: 210px; height: 60px;">
+    Pause / Skip Billing Cycle
+  </div>
+
+  <div class="use-case" style="left: 200px; top: 395px; width: 200px; height: 60px;">
+    View Subscription Status
+  </div>
+
+  <div class="use-case" style="left: 200px; top: 510px; width: 220px; height: 60px;">
+    Receive Renewal Notification
+  </div>
+
+  <!-- Fulfillment Lead use cases (right column) -->
+  <div class="use-case" style="left: 700px; top: 240px; width: 210px; height: 60px;">
+    View Fulfillment Manifest
+  </div>
+
+  <div class="use-case" style="left: 700px; top: 370px; width: 220px; height: 60px;">
+    Export Fulfillment Manifest
+  </div>
+
+  <!-- Internal system use cases (center) -->
+  <div class="use-case" style="left: 460px; top: 110px; width: 220px; height: 64px; background: #f0f0ff;">
+    Validate Customization Window
+  </div>
+
+  <div class="use-case" style="left: 460px; top: 510px; width: 240px; height: 64px; background: #f0f0ff;">
+    Apply Preference-Based Recommendations
+  </div>
+
+  <!-- ===== LINES (SVG) ===== -->
+  <svg class="lines-svg" viewBox="0 0 1100 720">
+
+    <!-- === Solid lines: Actor to Use Case === -->
+
+    <!-- Subscriber → Manage Preference Tags -->
+    <line x1="80" y1="310" x2="200" y2="85" class="solid-line"/>
+
+    <!-- Subscriber → Customize Monthly Box -->
+    <line x1="80" y1="310" x2="200" y2="195" class="solid-line"/>
+
+    <!-- Subscriber → Pause/Skip Billing Cycle -->
+    <line x1="80" y1="315" x2="200" y2="310" class="solid-line"/>
+
+    <!-- Subscriber → View Subscription Status -->
+    <line x1="80" y1="320" x2="200" y2="425" class="solid-line"/>
+
+    <!-- Subscriber → Receive Renewal Notification -->
+    <line x1="80" y1="330" x2="200" y2="540" class="solid-line"/>
+
+    <!-- Fulfillment Lead → View Fulfillment Manifest -->
+    <line x1="1040" y1="310" x2="910" y2="270" class="solid-line"/>
+
+    <!-- Fulfillment Lead → Export Fulfillment Manifest -->
+    <line x1="1040" y1="320" x2="920" y2="400" class="solid-line"/>
+
+    <!-- === Dashed lines: «include» and «extend» === -->
+
+    <!-- Customize Monthly Box → Validate Customization Window  «include» -->
+    <line x1="400" y1="180" x2="460" y2="145" class="dashed-line"/>
+    <!-- Arrowhead -->
+    <polygon points="460,145 448,140 450,152" class="arrow-head"/>
+    <!-- Label -->
+    <rect x="395" y="148" width="70" height="16" rx="2" class="label-bg"/>
+    <text x="430" y="160" text-anchor="middle" class="rel-label">«include»</text>
+
+    <!-- Customize Monthly Box → Apply Preference-Based Recommendations  «include» -->
+    <line x1="350" y1="225" x2="510" y2="510" class="dashed-line"/>
+    <polygon points="510,510 500,500 512,498" class="arrow-head"/>
+    <rect x="385" y="360" width="70" height="16" rx="2" class="label-bg"/>
+    <text x="420" y="372" text-anchor="middle" class="rel-label">«include»</text>
+
+    <!-- Pause/Skip Billing Cycle → Validate Customization Window  «include» -->
+    <line x1="410" y1="295" x2="475" y2="174" class="dashed-line"/>
+    <polygon points="475,174 463,172 467,183" class="arrow-head"/>
+    <rect x="430" y="225" width="70" height="16" rx="2" class="label-bg"/>
+    <text x="465" y="237" text-anchor="middle" class="rel-label">«include»</text>
+
+    <!-- Export Fulfillment Manifest → View Fulfillment Manifest  «extend» -->
+    <line x1="810" y1="370" x2="810" y2="300" class="dashed-line"/>
+    <polygon points="810,300 804,312 816,312" class="arrow-head"/>
+    <rect x="820" y="325" width="68" height="16" rx="2" class="label-bg"/>
+    <text x="854" y="337" text-anchor="middle" class="rel-label">«extend»</text>
+
+  </svg>
+
+</div>
+
+<div class="no-print" style="text-align:center;">
+  <button class="print-btn" onclick="window.print()">📄 Print / Save as PDF</button>
+  <p style="margin-top: 10px; font-size: 10pt; color: #888;">Tip: Right-click the diagram → "Save image as..." or take a screenshot for PNG</p>
+</div>
+
+</body>
+</html>
