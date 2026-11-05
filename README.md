@@ -17,6 +17,7 @@
 - [Lab 3: Component Modelling &amp; Architectural Pattern Selection](#-lab-3-component-modelling--architectural-pattern-selection)
 - [Lab 4: VibeCoding (Q*bert Repair)](#-lab-4-vibecoding-qbert-repair)
 - [Lab 5: Static Code Analysis](#-lab-5-static-code-analysis)
+- [Lab 6: Code and Branch Coverage](#-lab-6-code-and-branch-coverage)
 - [Full Deliverables Directory Listing](#-repository-deliverables-index)
 
 ---
@@ -140,13 +141,20 @@ Used Pylint, Bandit, and Flake8 to find and fix issues in the assigned script fr
 
 ---
 
+## 🧪 Lab 6: Code and Branch Coverage
+
+Wrote pytest cases for the salon booking module from [SETAPESU26/L6_L7_42_salon_booking](https://github.com/SETAPESU26/L6_L7_42_salon_booking), raising coverage of `salon_booking.py` from 38% line and 32% branch to 100% for both. The tests and coverage output are in [Lab-6](Lab-6/README.md).
+
+---
+
 ## 🗂️ Repository Deliverables Index
 
 ```
 .
-├── README.md                                    # Master Laboratory Portfolio (Labs 1 to 5)
+├── README.md                                    # Master Laboratory Portfolio (Labs 1 to 6)
 ├── Lab-4/                                       # Lab 4 videos, updated code, and chat history
 ├── Lab-5/                                       # Lab 5 code, reports, issue table, and reflection
+├── Lab-6/                                       # Lab 6 coverage tests and terminal output
 │
 ├── Lab 1 Files
 │   ├── 35_SE_Lab1_SE_Problem_Statements.pdf     # Original Problem Statement #35
