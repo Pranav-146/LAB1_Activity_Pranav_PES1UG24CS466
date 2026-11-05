@@ -15,6 +15,7 @@
 - [Lab 1: Requirements Engineering &amp; Use-Case Modelling](#-lab-1-requirements-engineering--use-case-modelling)
 - [Lab 2: Agile Backlog Creation &amp; Sprint Simulation in Jira](#-lab-2-agile-backlog-creation--sprint-simulation-in-jira)
 - [Lab 3: Component Modelling &amp; Architectural Pattern Selection](#-lab-3-component-modelling--architectural-pattern-selection)
+- [Lab 4: VibeCoding (Q*bert Repair)](#-lab-4-vibecoding-qbert-repair)
 - [Full Deliverables Directory Listing](#-repository-deliverables-index)
 
 ---
@@ -126,11 +127,18 @@ Functional requirements from Lab 1 were decomposed into 3 major Agile Epics and 
 
 ---
 
+## 🎮 Lab 4: VibeCoding (Q*bert Repair)
+
+Fixed the pyramid projection bug and added the three features from the assigned repo, [SETAPESU26/35_qbert](https://github.com/SETAPESU26/35_qbert), using Claude Code. The before and after videos, updated code, and chat history are in [Lab-4](Lab-4/README.md).
+
+---
+
 ## 🗂️ Repository Deliverables Index
 
 ```
 .
-├── README.md                                    # Master Laboratory Portfolio (Labs 1, 2, and 3)
+├── README.md                                    # Master Laboratory Portfolio (Labs 1 to 4)
+├── Lab-4/                                       # Lab 4 videos, updated code, and chat history
 │
 ├── Lab 1 Files
 │   ├── 35_SE_Lab1_SE_Problem_Statements.pdf     # Original Problem Statement #35
