@@ -16,6 +16,7 @@
 - [Lab 2: Agile Backlog Creation &amp; Sprint Simulation in Jira](#-lab-2-agile-backlog-creation--sprint-simulation-in-jira)
 - [Lab 3: Component Modelling &amp; Architectural Pattern Selection](#-lab-3-component-modelling--architectural-pattern-selection)
 - [Lab 4: VibeCoding (Q*bert Repair)](#-lab-4-vibecoding-qbert-repair)
+- [Lab 5: Static Code Analysis](#-lab-5-static-code-analysis)
 - [Full Deliverables Directory Listing](#-repository-deliverables-index)
 
 ---
@@ -133,12 +134,19 @@ Fixed the pyramid projection bug and added the three features from the assigned 
 
 ---
 
+## 🔍 Lab 5: Static Code Analysis
+
+Used Pylint, Bandit, and Flake8 to find and fix issues in the assigned script from [SETAPESU26/L5_42_student_grade_system](https://github.com/SETAPESU26/L5_42_student_grade_system). The Pylint score rose from 5.51 to 10.00, and Bandit and Flake8 now report no issues. The code, reports, issue table, and reflection are in [Lab-5](Lab-5/README.md).
+
+---
+
 ## 🗂️ Repository Deliverables Index
 
 ```
 .
-├── README.md                                    # Master Laboratory Portfolio (Labs 1 to 4)
+├── README.md                                    # Master Laboratory Portfolio (Labs 1 to 5)
 ├── Lab-4/                                       # Lab 4 videos, updated code, and chat history
+├── Lab-5/                                       # Lab 5 code, reports, issue table, and reflection
 │
 ├── Lab 1 Files
 │   ├── 35_SE_Lab1_SE_Problem_Statements.pdf     # Original Problem Statement #35
