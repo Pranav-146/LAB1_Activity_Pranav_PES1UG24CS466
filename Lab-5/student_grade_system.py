@@ -5,6 +5,8 @@ import os
 import secrets
 import json
 
+MAX_MARK = 100
+
 gradebook = {
     "S01": {"name": "Alice", "marks": [85, 90, 78], "attendance": 92},
     "S02": {"name": "Bob", "marks": [60, 55, 65], "attendance": 74},
@@ -12,11 +14,17 @@ gradebook = {
 }
 
 
+def average_mark(student_id):
+    """Return the student's average mark, or 0.0 if they have no marks."""
+    marks = gradebook[student_id]["marks"]
+    return sum(marks) / len(marks) if marks else 0.0
+
+
 def add_grade(student_id, mark, grade_list=None):
     """Record a mark for a student and return whether it was accepted."""
     if grade_list is None:
         grade_list = []
-    if student_id not in gradebook or mark < 0:
+    if student_id not in gradebook or not 0 <= mark <= MAX_MARK:
         return False
     gradebook[student_id]["marks"].append(mark)
     grade_list.append(f"Recorded score {mark} for student id {student_id}")
@@ -36,16 +44,14 @@ def check_passing_status(student_id, pass_threshold=50.0):
     grace_marks = 5.0
     if gradebook.get(student_id) is None:
         return False
-    marks = gradebook[student_id]["marks"]
-    avg = sum(marks) / len(marks)
-    return avg + grace_marks >= pass_threshold
+    if not gradebook[student_id]["marks"]:
+        return False
+    return average_mark(student_id) + grace_marks >= pass_threshold
 
 
 def compute_weighted_gpa(student_id, scale=20.0):
     """Return the student's average mark divided by the GPA scale."""
-    marks = gradebook[student_id]["marks"]
-    avg_score = sum(marks) / len(marks)
-    return avg_score / scale
+    return average_mark(student_id) / scale
 
 
 def generate_student_hash(student_id):
@@ -78,4 +84,5 @@ def main():
     print("Portal token configured:", portal_token is not None)
 
 
-main()
+if __name__ == "__main__":
+    main()
