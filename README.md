@@ -18,6 +18,7 @@
 - [Lab 4: VibeCoding (Q*bert Repair)](#-lab-4-vibecoding-qbert-repair)
 - [Lab 5: Static Code Analysis](#-lab-5-static-code-analysis)
 - [Lab 6: Code and Branch Coverage](#-lab-6-code-and-branch-coverage)
+- [Lab 7: Fuzz Testing](#-lab-7-fuzz-testing)
 - [Full Deliverables Directory Listing](#-repository-deliverables-index)
 
 ---
@@ -147,14 +148,21 @@ Wrote pytest cases for the salon booking module from [SETAPESU26/L6_L7_42_salon_
 
 ---
 
+## 🐛 Lab 7: Fuzz Testing
+
+Used Hypothesis to fuzz the three functions in `salon_booking.py` from the same repo. The fuzz tests found 13 input bugs (crashes on `None`, empty or malformed strings, and wrong results such as 0 minutes, `inf`, negative discounts and unrounded bills). 10 of 12 tests failed on the original script and all 12 pass on the fixed one. The fixed script, tests and report PDF are in [Lab-7](Lab-7/README.md).
+
+---
+
 ## 🗂️ Repository Deliverables Index
 
 ```
 .
-├── README.md                                    # Master Laboratory Portfolio (Labs 1 to 6)
+├── README.md                                    # Master Laboratory Portfolio (Labs 1 to 7)
 ├── Lab-4/                                       # Lab 4 videos, updated code, and chat history
 ├── Lab-5/                                       # Lab 5 code, reports, issue table, and reflection
 ├── Lab-6/                                       # Lab 6 coverage tests and terminal output
+├── Lab-7/                                       # Lab 7 fuzz tests, fixed script, and report PDF
 │
 ├── Lab 1 Files
 │   ├── 35_SE_Lab1_SE_Problem_Statements.pdf     # Original Problem Statement #35
