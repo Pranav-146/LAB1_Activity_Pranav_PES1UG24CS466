@@ -61,7 +61,7 @@ A subscription box portal where subscribers customize monthly product selections
 📁 **Dedicated Directory:** [`Lab2/`](./Lab2/)
 
 ### Objectives & Agile Transformation
-Functional requirements from Lab 1 were decomposed into 3 major Agile Epics and 7 prioritized User Stories. Using **Planning Poker** with the **Fibonacci sequence**, relative effort estimates were assigned. Two consecutive 1-week sprints were simulated in Jira, transitioning tasks across `To Do` $\rightarrow$ `In Progress` $\rightarrow$ `Done`, with velocity monitored via Jira's Burndown Chart.
+Functional requirements from Lab 1 were decomposed into 3 major Agile Epics and 7 prioritized User Stories. Using **Planning Poker** with the **Fibonacci sequence**, relative effort estimates were assigned. Two sprints were simulated in Jira, transitioning tasks across `To Do` $\rightarrow$ `In Progress` $\rightarrow$ `Done`, and progress was reviewed with Jira's Burndown Chart.
 
 ### Lab 2 Deliverables
 
@@ -94,10 +94,10 @@ Functional requirements from Lab 1 were decomposed into 3 major Agile Epics and 
 ![Sprint 1 Burndown](./Lab2/jira_burndown_sprint1.png)
 
 ### Summary Answers to Reflection Questions
-1. **Did your estimations reflect the actual effort?** Yes; 5-point stories (SCRUM-9, SCRUM-13) had complex temporal boundaries (48h cutoff, 10,000 label batch generation in <60s), while 3-point stories (SCRUM-11, SCRUM-14) had simple states.
-2. **Was your backlog well-prioritized?** Yes; customer-facing customization and pausing were prioritized into Sprint 1 for early value; fulfillment manifest operations and notifications were placed in Sprint 2.
-3. **How did your simulated sprint align with your plan?** Both Sprint 1 (18 SP) and Sprint 2 (13 SP) completed 100% of tasks on schedule without mid-sprint scope creep.
-4. **What insights did the burndown chart give about your team's capacity?** Established a sustainable velocity of 15–18 Story Points per 1-week sprint with steady linear progress.
+1. **Did your estimations reflect the actual effort?** The relative sizes make sense (5 points for the stories with the 48-hour cutoff and the 10,000-label export, 3 for simple state changes), but all stories were moved to Done at once, so Jira cannot confirm actual effort.
+2. **Was your backlog well-prioritized?** Yes; subscriber-facing customization and pausing went into Sprint 1 for early value; the fulfillment manifest and notifications went into Sprint 2.
+3. **How did your simulated sprint align with your plan?** All 18 SP (Sprint 1) and 13 SP (Sprint 2) were completed with no scope changes, but the Jira sprints are not 1 week long and all work was moved to Done on 7 Sep.
+4. **What insights did the burndown chart give about your team's capacity?** Both charts drop straight to zero because the sprints were simulated in one session, so they give no reliable velocity beyond 31 SP across two sprints.
 
 ---
 

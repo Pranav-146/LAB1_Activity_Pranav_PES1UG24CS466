@@ -10,8 +10,10 @@ def get_base64_image(image_path):
             ext = "jpeg"
         return f"data:image/{ext};base64,{encoded}"
 
-b64_backlog = get_base64_image("jira_backlog_view.png")
-b64_burndown = get_base64_image("jira_burndown_chart_view.png")
+# Real captures from the Jira workspace (sripranavbuduguru.atlassian.net, project SCRUM)
+b64_epics = get_base64_image("jira_epics_and_stories.png")
+b64_burndown1 = get_base64_image("jira_burndown_sprint1.png")
+b64_burndown2 = get_base64_image("jira_burndown_sprint2.png")
 b64_sprint1_board = get_base64_image("Screenshot (569).png")
 b64_sprint2_board1 = get_base64_image("Screenshot (573).png")
 b64_sprint2_board2 = get_base64_image("Screenshot (574).png")
@@ -131,6 +133,13 @@ tr:nth-child(even) td {
   margin-top: 4px;
   font-style: italic;
 }
+.crop {
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid #dfe1e6;
+  margin: 0 auto;
+}
+.crop img { display: block; width: 100%; border: none; border-radius: 0; box-shadow: none; }
 .page-break {
   page-break-before: always;
 }
@@ -257,10 +266,20 @@ html_epics = f"""<!DOCTYPE html>
     Sprint 2 was allocated <strong>13 Story Points</strong> (SCRUM-12, SCRUM-13, SCRUM-14) focusing on warehouse fulfillment operations and automated notification services.
   </div>
 
-  <h2>3. Jira Backlog &amp; Story Points Evidence</h2>
+  <h2>3. Jira Epics, User Stories &amp; Story Points Evidence</h2>
   <div class='img-container'>
-    <img src='{b64_backlog}' alt='Jira Backlog and Epics View' style='max-height: 380px;' />
-    <div class='img-caption'>Figure 1: Jira Agile Product Backlog showing Epics panel, Sprint 1 (18 SP), Sprint 2 (13 SP), priority indicators, and story point allocations.</div>
+    <img src='{b64_epics}' alt='Jira epics and user stories' style='max-height: 330px;' />
+    <div class='img-caption'>Figure 1: Jira work item search for project SCRUM showing the 3 Epics (SCRUM-5 to 7) and 7 User Stories (SCRUM-8 to 14). Both sprints are complete, so the stories no longer appear on the Backlog page.</div>
+  </div>
+  <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px;'>
+    <div class='img-container'>
+      <div class='crop' style='aspect-ratio: 800 / 288;'><img src='{b64_burndown1}' style='margin-top: -105.6%;' alt='Sprint 1 story points' /></div>
+      <div class='img-caption'>Figure 2: Story points assigned to the Sprint 1 stories (18 SP), from Jira&rsquo;s Sprint 1 report.</div>
+    </div>
+    <div class='img-container'>
+      <div class='crop' style='aspect-ratio: 800 / 242;'><img src='{b64_burndown2}' style='margin-top: -105%;' alt='Sprint 2 story points' /></div>
+      <div class='img-caption'>Figure 3: Story points assigned to the Sprint 2 stories (13 SP), from Jira&rsquo;s Sprint 2 report.</div>
+    </div>
   </div>
 
   <div class='footer'>
@@ -289,7 +308,7 @@ html_reflection = f"""<!DOCTYPE html>
     <div><strong>Student Name:</strong> Pranav</div>
     <div><strong>SRN:</strong> PES1UG24CS466</div>
     <div><strong>Problem Statement #35:</strong> Customizable Subscription Box Scheduler</div>
-    <div><strong>Simulation Timebox:</strong> 1-Week Sprint Iterations (Sprint 1 &amp; Sprint 2)</div>
+    <div><strong>Sprint Dates (Jira):</strong> Sprint 1: 6&ndash;20 Sep 2026 | Sprint 2: 7 Sep&ndash;4 Oct 2026</div>
     <div><strong>Committed Effort:</strong> Sprint 1: 18 SP | Sprint 2: 13 SP</div>
     <div><strong>Completion Status:</strong> 100% Completed (31 / 31 SP)</div>
   </div>
@@ -302,40 +321,49 @@ html_reflection = f"""<!DOCTYPE html>
   <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;'>
     <div class='img-container'>
       <img src='{b64_sprint1_board}' alt='Sprint 1 Active Board' style='height: 175px; object-fit: cover;' />
-      <div class='img-caption'>Figure 2: Sprint 1 Board during active simulation (SCRUM-8 to SCRUM-11).</div>
+      <div class='img-caption'>Figure 4: Sprint 1 Board during active simulation (SCRUM-8 to SCRUM-11).</div>
     </div>
     <div class='img-container'>
       <img src='{b64_sprint2_board2}' alt='Sprint 2 Board In Progress' style='height: 175px; object-fit: cover;' />
-      <div class='img-caption'>Figure 3: Sprint 2 Board progressing tasks (SCRUM-12 to SCRUM-14).</div>
+      <div class='img-caption'>Figure 5: Sprint 2 Board progressing tasks (SCRUM-12 to SCRUM-14).</div>
     </div>
   </div>
 
-  <h2>2. Burndown Chart &amp; Velocity Tracking</h2>
-  <div class='img-container'>
-    <img src='{b64_burndown}' alt='Jira Burndown Chart' style='max-height: 290px;' />
-    <div class='img-caption'>Figure 4: Jira Burndown Chart for Sprint 1 tracking remaining story points vs. ideal linear guideline.</div>
+  <h2>2. Burndown Charts</h2>
+  <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 10px;'>
+    <div class='img-container'>
+      <div class='crop' style='aspect-ratio: 800 / 830;'><img src='{b64_burndown1}' alt='Sprint 1 burndown' /></div>
+      <div class='img-caption'>Figure 6: Jira Sprint burndown chart, Sprint 1 (18 SP).</div>
+    </div>
+    <div class='img-container'>
+      <div class='crop' style='aspect-ratio: 800 / 826;'><img src='{b64_burndown2}' alt='Sprint 2 burndown' /></div>
+      <div class='img-caption'>Figure 7: Jira Sprint burndown chart, Sprint 2 (13 SP).</div>
+    </div>
   </div>
+  <p>
+    In both charts the red <em>remaining work</em> line stays flat and then drops straight to 0. Jira records all four Sprint 1 stories as moved to Done on 7 Sep, the day after the sprint started, and all three Sprint 2 stories as moved to Done on 7 Sep, the day that sprint started. Neither sprint had scope changes, and no work items were left incomplete.
+  </p>
 
   <h2 style='margin-top: 10px;'>3. Answers to Handout Reflection Questions</h2>
 
   <h3>Q1: Did your estimations reflect the actual effort?</h3>
   <p>
-    <strong>Yes.</strong> Applying Planning Poker with the Fibonacci sequence (1, 2, 3, 5, 8) accurately captured the non-linear difference between tasks. Stories estimated at <strong>5 Story Points</strong> (e.g., SCRUM-9: Item Swapping, SCRUM-13: Manifest Exporting) involved critical constraints such as 48-hour cutoff lockout validation and batching 10,000 records in under 60 seconds (NFR-001). Conversely, stories estimated at <strong>3 Story Points</strong> (e.g., SCRUM-11: Skip Billing Cycle, SCRUM-14: Reminder Notifications) had straightforward state flags and notification webhooks. The team burned down all 18 points in Sprint 1 without sudden last-minute rushes, confirming estimation accuracy.
+    <strong>The burndown cannot confirm it.</strong> The relative sizes still make sense: the 5-point stories (for example SCRUM-9 Swap Box Items and SCRUM-13 Export Fulfillment Manifest) carry the hardest constraints, such as the 48-hour cutoff and exporting 10,000 labels in under a minute (NFR-001), while the 3-point stories (SCRUM-11 Skip Billing Cycle and SCRUM-14 Renewal Reminder Notifications) are mostly simple state changes and scheduled alerts. However, every story was moved to Done at almost the same time, so Jira holds no record of how long each one took. Checking estimates against actual effort would need the stories to be updated as the work really progressed.
   </p>
 
   <h3>Q2: Was your backlog well-prioritized?</h3>
   <p>
-    <strong>Yes.</strong> Backlog prioritization followed user value and technical dependency ordering. High-priority subscriber features (preference tags, box customization, pause delivery) were scheduled in <strong>Sprint 1</strong> to deliver a functional core customer journey early. Operations-heavy features (manifest viewing, batch label generation, and 72-hour reminders) were scheduled in <strong>Sprint 2</strong>, which logically builds upon finalized subscriber boxes.
+    <strong>Yes.</strong> The subscriber-facing features (preference tags, swapping items, pausing delivery and skipping a billing cycle) were placed in <strong>Sprint 1</strong> so the core customer journey came first. The fulfillment features (viewing and exporting the manifest) and the 72-hour renewal reminders were placed in <strong>Sprint 2</strong>, because the manifest depends on subscribers&rsquo; boxes being finalised first.
   </p>
 
   <h3>Q3: How did your simulated sprint align with your plan?</h3>
   <p>
-    <strong>Strong Alignment.</strong> The team burned down work steadily across the 7-day sprint window. SCRUM-8 completed on Day 3, SCRUM-9 on Day 5, SCRUM-10 on Day 6, and SCRUM-11 on Day 7. Sprint 2 similarly completed all 13 committed story points on schedule. Scope creep was prevented by freezing sprint backlogs once execution began.
+    <strong>The scope matched the plan, but the timing did not.</strong> All 18 planned points in Sprint 1 and all 13 in Sprint 2 were completed, with no scope changes and nothing left over. The timing differs from the plan in two ways. The handout asks for 1-week sprints, but in Jira Sprint 1 runs from 6 to 20 Sep and Sprint 2 from 7 Sep to 4 Oct. And instead of finishing stories one by one across the sprint, all the work was moved to Done on 7 Sep, because the sprints were simulated in a single session.
   </p>
 
   <h3>Q4: What insights did the burndown chart give about your team&rsquo;s capacity?</h3>
   <p>
-    The burndown chart confirmed a sustainable team velocity of <strong>15 to 18 Story Points per 1-week sprint</strong>. The curve tracked closely alongside the ideal guideline rather than displaying a flat plateau followed by a cliff-edge drop. This indicates that stories were granularly decomposed and that 18 story points is an optimal commitment threshold for future sprint planning.
+    Both charts show the &ldquo;sharp drop&rdquo; pattern the handout describes: a flat line followed by a sudden fall to zero, instead of following the guideline. In a real team this would suggest that work was not updated as it happened or was not broken down well. Here it is because the sprints were simulated, so the charts cannot give a reliable velocity. The only firm figure is that the team delivered 31 story points across two sprints (18 and 13). For a real project, moving each story across the board on the day its work actually finishes would make the burndown a useful measure of capacity.
   </p>
 
   <div class='footer'>

@@ -13,7 +13,7 @@
 ## 🎯 Lab 2 Objectives & Learning Outcomes
 1. **Define Epics & User Stories:** Transform Lab 1 Functional Requirements (`FR-001` through `FR-005`) into structured Agile Epics and User Stories using the standard Agile template (`As a... I want to... So that...`).
 2. **Prioritization & Estimation:** Prioritize backlog items and assign Story Points using the **Fibonacci sequence (1, 2, 3, 5, 8...)** via **Planning Poker** techniques.
-3. **Sprint Simulation:** Set up and execute 2 time-boxed 1-week sprints in Jira, simulating task workflow transitions: `To Do` $\rightarrow$ `In Progress` $\rightarrow$ `Done`.
+3. **Sprint Simulation:** Set up and execute 2 sprints in Jira, simulating task workflow transitions: `To Do` $\rightarrow$ `In Progress` $\rightarrow$ `Done`.
 4. **Burndown Analysis & Reflection:** Monitor sprint progress using Jira's **Burndown Chart**, tracking velocity against the linear guideline and analyzing team capacity.
 
 ---
@@ -97,13 +97,13 @@ These are real captures from Jira's Sprint burndown chart report. Each page was 
 ## 💡 Answers to Handout Reflection Questions
 
 ### 1. Did your estimations reflect the actual effort?
-**Yes.** Using Planning Poker and the Fibonacci sequence (1, 2, 3, 5, 8) accurately differentiated relative effort and risk. 5-point stories (like `SCRUM-9` Item Swapping and `SCRUM-13` Manifest Export) required substantial backend validation (48-hour cutoff lockout logic, inventory reservation, and processing 10,000 records in under 1 minute). 3-point stories (`SCRUM-11` and `SCRUM-14`) had smaller architectural footprints and were finished in 1–2 days. The non-linear scale successfully prevented false precision.
+**The burndown cannot confirm it.** The relative sizes still make sense: the 5-point stories (such as `SCRUM-9` Swap Box Items and `SCRUM-13` Export Fulfillment Manifest) carry the hardest constraints, like the 48-hour cutoff and exporting 10,000 labels in under a minute, while the 3-point stories (`SCRUM-11` and `SCRUM-14`) are mostly simple state changes and scheduled alerts. But every story was moved to Done at almost the same time, so Jira has no record of how long each one took.
 
 ### 2. Was your backlog well-prioritized?
-**Yes.** Prioritization strictly aligned with end-user value and logical dependencies. High-priority subscriber features (customization, preference tags, pausing) were prioritized in **Sprint 1** to deliver a functional self-service MVP early. Operational fulfillment tasks and batch exports were placed in **Sprint 2**, which aligns with reality because warehouse manifests depend on finalized subscriber box selections.
+**Yes.** The subscriber-facing features (preference tags, swapping items, pausing delivery, skipping a cycle) went into **Sprint 1** so the core customer journey came first. The fulfillment features and 72-hour reminders went into **Sprint 2**, because the manifest depends on subscribers' boxes being finalised first.
 
 ### 3. How did your simulated sprint align with your plan?
-**Strongly.** Both simulated sprints completed 100% of their committed story points within their respective 1-week timeboxes. The team avoided mid-sprint scope creep by freezing the sprint backlog upon launch and following a clear Definition of Done (DoD) before transitioning items across columns.
+**The scope matched the plan, but the timing did not.** All 18 points in Sprint 1 and 13 in Sprint 2 were completed, with no scope changes and nothing left over. But the sprints in Jira are not 1 week long (Sprint 1 runs 6 to 20 Sep, Sprint 2 runs 7 Sep to 4 Oct), and all the work was moved to Done on 7 Sep because the sprints were simulated in one session.
 
 ### 4. What insights did the burndown chart give about your team’s capacity?
-The burndown chart confirmed a sustainable team velocity of **15 to 18 Story Points per 1-week sprint**. The downward progression tracked closely along the ideal linear guideline without last-minute cliff-drops, indicating healthy work pacing and appropriate task sizing.
+Both charts show the "sharp drop" pattern the handout describes: flat, then a sudden fall to zero. In a real team that would suggest work was not updated as it happened. Here it is because the sprints were simulated, so the charts cannot give a reliable velocity. The only firm figure is 31 story points delivered across two sprints (18 and 13).
