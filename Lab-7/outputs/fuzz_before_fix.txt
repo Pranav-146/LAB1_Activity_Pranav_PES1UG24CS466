@@ -1,0 +1,462 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.0, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\College\sem 5\SE_mini_project\Lab-7
+plugins: anyio-4.14.2, hypothesis-6.170.15
+collected 12 items
+
+test_salon_booking.py FF.FFF.FFFFF                                       [100%]
+
+================================== FAILURES ===================================
+_________________________ test_parse_booking_no_crash _________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 46, in test_parse_booking_no_crash
+  |     def test_parse_booking_no_crash(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 48, in test_parse_booking_no_crash
+    |     parse_booking(s)
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 3, in parse_booking
+    |     return service.strip().title(), float(minutes)
+    |                                     ^^^^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 50, in test_parse_booking_no_crash
+    |     assert False, f"parse_booking crashed with: {e!r}"
+    | AssertionError: parse_booking crashed with: ValueError("could not convert string to float: ''")
+    | assert False
+    | Failing test case: test_parse_booking_no_crash(
+    |     s=':',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 48, in test_parse_booking_no_crash
+    |     parse_booking(s)
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 2, in parse_booking
+    |     service, minutes = text.split(':')
+    |     ^^^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 50, in test_parse_booking_no_crash
+    |     assert False, f"parse_booking crashed with: {e!r}"
+    | AssertionError: parse_booking crashed with: ValueError('not enough values to unpack (expected 2, got 1)')
+    | assert False
+    | Failing test case: test_parse_booking_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 48, in test_parse_booking_no_crash
+    |     parse_booking(s)
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 2, in parse_booking
+    |     service, minutes = text.split(':')
+    |                        ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 50, in test_parse_booking_no_crash
+    |     assert False, f"parse_booking crashed with: {e!r}"
+    | AssertionError: parse_booking crashed with: AttributeError("'NoneType' object has no attribute 'split'")
+    | assert False
+    | Failing test case: test_parse_booking_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+_____________________ test_parse_booking_output_is_valid ______________________
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 54, in test_parse_booking_output_is_valid
+  |     def test_parse_booking_output_is_valid(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 6 distinct failures. (6 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 60, in test_parse_booking_output_is_valid
+    |     assert math.isfinite(minutes), f"duration is not a real number: {minutes}"
+    | AssertionError: duration is not a real number: inf
+    | assert False
+    |  +  where False = <built-in function isfinite>(inf)
+    |  +    where <built-in function isfinite> = math.isfinite
+    | Failing test case: test_parse_booking_output_is_valid(
+    |     s='0:1E400',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 61, in test_parse_booking_output_is_valid
+    |     assert 0 < minutes <= MAX_MINUTES, f"duration out of range: {minutes}"
+    | AssertionError: duration out of range: 0.0
+    | assert 0 < 0.0
+    | Failing test case: test_parse_booking_output_is_valid(
+    |     s='0:0',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 59, in test_parse_booking_output_is_valid
+    |     assert isinstance(service, str) and service.strip()
+    | AssertionError: assert (True and '')
+    |  +  where True = isinstance('', str)
+    |  +  and   '' = <built-in method strip of str object at 0x00007FFFD0171D00>()
+    |  +    where <built-in method strip of str object at 0x00007FFFD0171D00> = ''.strip
+    | Failing test case: test_parse_booking_output_is_valid(
+    |     s=':0',
+    | )
+    +---------------- 4 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 55, in test_parse_booking_output_is_valid
+    |     result = parse_booking(s)
+    |              ^^^^^^^^^^^^^^^^
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 3, in parse_booking
+    |     return service.strip().title(), float(minutes)
+    |                                     ^^^^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | Failing test case: test_parse_booking_output_is_valid(
+    |     s=':',
+    | )
+    +---------------- 5 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 55, in test_parse_booking_output_is_valid
+    |     result = parse_booking(s)
+    |              ^^^^^^^^^^^^^^^^
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 2, in parse_booking
+    |     service, minutes = text.split(':')
+    |     ^^^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | Failing test case: test_parse_booking_output_is_valid(
+    |     s='',
+    | )
+    +---------------- 6 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 55, in test_parse_booking_output_is_valid
+    |     result = parse_booking(s)
+    |              ^^^^^^^^^^^^^^^^
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 2, in parse_booking
+    |     service, minutes = text.split(':')
+    |                        ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_parse_booking_output_is_valid(
+    |     s=None,
+    | )
+    +------------------------------------
+_______________ test_parse_booking_rejects_out_of_range_minutes _______________
+
+    @given(service_names, st.integers(max_value=0) | st.integers(min_value=MAX_MINUTES + 1))
+>   def test_parse_booking_rejects_out_of_range_minutes(service, minutes):
+                   ^^^
+
+test_salon_booking.py:71: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+service = 'A', minutes = 0
+
+    @given(service_names, st.integers(max_value=0) | st.integers(min_value=MAX_MINUTES + 1))
+    def test_parse_booking_rejects_out_of_range_minutes(service, minutes):
+>       assert parse_booking(f"{service}:{minutes}") is None
+E       AssertionError: assert ('A', 0.0) is None
+E        +  where ('A', 0.0) = parse_booking('A:0')
+E       Failing test case: test_parse_booking_rejects_out_of_range_minutes(
+E           service='A',
+E           minutes=0,
+E       )
+
+test_salon_booking.py:72: AssertionError
+_______________________ test_duration_average_no_crash ________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 78, in test_duration_average_no_crash
+  |     def test_duration_average_no_crash(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 80, in test_duration_average_no_crash
+    |     duration_average(s)
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 6, in duration_average
+    |     values = [int(r) for r in durations_csv.split(',')]
+    |               ^^^^^^
+    | ValueError: invalid literal for int() with base 10: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 82, in test_duration_average_no_crash
+    |     assert False, f"duration_average crashed with: {e!r}"
+    | AssertionError: duration_average crashed with: ValueError("invalid literal for int() with base 10: ''")
+    | assert False
+    | Failing test case: test_duration_average_no_crash(
+    |     s='',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 80, in test_duration_average_no_crash
+    |     duration_average(s)
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 6, in duration_average
+    |     values = [int(r) for r in durations_csv.split(',')]
+    |                               ^^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 82, in test_duration_average_no_crash
+    |     assert False, f"duration_average crashed with: {e!r}"
+    | AssertionError: duration_average crashed with: AttributeError("'NoneType' object has no attribute 'split'")
+    | assert False
+    | Failing test case: test_duration_average_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+____________________ test_duration_average_output_is_valid ____________________
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 86, in test_duration_average_output_is_valid
+  |     def test_duration_average_output_is_valid(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 91, in test_duration_average_output_is_valid
+    |     assert 0 < result <= MAX_MINUTES, f"average out of range: {result}"
+    | AssertionError: average out of range: 0
+    | assert 0 < 0
+    | Failing test case: test_duration_average_output_is_valid(
+    |     s='0',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 87, in test_duration_average_output_is_valid
+    |     result = duration_average(s)
+    |              ^^^^^^^^^^^^^^^^^^^
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 6, in duration_average
+    |     values = [int(r) for r in durations_csv.split(',')]
+    |               ^^^^^^
+    | ValueError: invalid literal for int() with base 10: ''
+    | Failing test case: test_duration_average_output_is_valid(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 87, in test_duration_average_output_is_valid
+    |     result = duration_average(s)
+    |              ^^^^^^^^^^^^^^^^^^^
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 6, in duration_average
+    |     values = [int(r) for r in durations_csv.split(',')]
+    |                               ^^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_duration_average_output_is_valid(
+    |     s=None,
+    | )
+    +------------------------------------
+_________________ test_duration_average_rejects_non_positive __________________
+
+    @given(st.lists(st.integers(1, MAX_MINUTES), max_size=5), st.integers(max_value=0))
+>   def test_duration_average_rejects_non_positive(values, bad):
+                   ^^^
+
+test_salon_booking.py:103: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+values = [], bad = 0
+
+    @given(st.lists(st.integers(1, MAX_MINUTES), max_size=5), st.integers(max_value=0))
+    def test_duration_average_rejects_non_positive(values, bad):
+        csv = ",".join(str(v) for v in values + [bad])
+>       assert duration_average(csv) is None
+E       AssertionError: assert 0 is None
+E        +  where 0 = duration_average('0')
+E       Failing test case: test_duration_average_rejects_non_positive(
+E           values=[],
+E           bad=0,
+E       )
+
+test_salon_booking.py:105: AssertionError
+_________________________ test_payable_bill_no_crash __________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 111, in test_payable_bill_no_crash
+  |     def test_payable_bill_no_crash(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 113, in test_payable_bill_no_crash
+    |     payable_bill(s)
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 11, in payable_bill
+    |     total = float(bill) * 1.18 - float(discount)
+    |             ^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 115, in test_payable_bill_no_crash
+    |     assert False, f"payable_bill crashed with: {e!r}"
+    | AssertionError: payable_bill crashed with: ValueError("could not convert string to float: ''")
+    | assert False
+    | Failing test case: test_payable_bill_no_crash(
+    |     s='|',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 113, in test_payable_bill_no_crash
+    |     payable_bill(s)
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 10, in payable_bill
+    |     bill, discount = text.split('|')
+    |     ^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 115, in test_payable_bill_no_crash
+    |     assert False, f"payable_bill crashed with: {e!r}"
+    | AssertionError: payable_bill crashed with: ValueError('not enough values to unpack (expected 2, got 1)')
+    | assert False
+    | Failing test case: test_payable_bill_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 113, in test_payable_bill_no_crash
+    |     payable_bill(s)
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 10, in payable_bill
+    |     bill, discount = text.split('|')
+    |                      ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 115, in test_payable_bill_no_crash
+    |     assert False, f"payable_bill crashed with: {e!r}"
+    | AssertionError: payable_bill crashed with: AttributeError("'NoneType' object has no attribute 'split'")
+    | assert False
+    | Failing test case: test_payable_bill_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+______________________ test_payable_bill_output_is_valid ______________________
+  + Exception Group Traceback (most recent call last):
+  |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 119, in test_payable_bill_output_is_valid
+  |     def test_payable_bill_output_is_valid(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 4 distinct failures. (4 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 123, in test_payable_bill_output_is_valid
+    |     assert math.isfinite(result), f"bill is not a real number: {result}"
+    | AssertionError: bill is not a real number: inf
+    | assert False
+    |  +  where False = <built-in function isfinite>(inf)
+    |  +    where <built-in function isfinite> = math.isfinite
+    | Failing test case: test_payable_bill_output_is_valid(
+    |     s='0|-1E400',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 120, in test_payable_bill_output_is_valid
+    |     result = payable_bill(s)
+    |              ^^^^^^^^^^^^^^^
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 11, in payable_bill
+    |     total = float(bill) * 1.18 - float(discount)
+    |             ^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | Failing test case: test_payable_bill_output_is_valid(
+    |     s='|',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 120, in test_payable_bill_output_is_valid
+    |     result = payable_bill(s)
+    |              ^^^^^^^^^^^^^^^
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 10, in payable_bill
+    |     bill, discount = text.split('|')
+    |     ^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | Failing test case: test_payable_bill_output_is_valid(
+    |     s='',
+    | )
+    +---------------- 4 ----------------
+    | Traceback (most recent call last):
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\test_salon_booking.py", line 120, in test_payable_bill_output_is_valid
+    |     result = payable_bill(s)
+    |              ^^^^^^^^^^^^^^^
+    |   File "D:\College\sem 5\SE_mini_project\Lab-7\salon_booking.py", line 10, in payable_bill
+    |     bill, discount = text.split('|')
+    |                      ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_payable_bill_output_is_valid(
+    |     s=None,
+    | )
+    +------------------------------------
+________________________ test_payable_bill_valid_input ________________________
+
+    @given(st.integers(0, 1_000_000), st.integers(0, 1_000_000))
+>   def test_payable_bill_valid_input(bill, discount):
+                   ^^^
+
+test_salon_booking.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+bill = 1, discount = 1
+
+    @given(st.integers(0, 1_000_000), st.integers(0, 1_000_000))
+    def test_payable_bill_valid_input(bill, discount):
+        result = payable_bill(f"{bill}|{discount}")
+>       assert result == round(max(bill * 1.18 - discount, 0), 2)
+E       assert 0.17999999999999994 == 0.18
+E        +  where 0.18 = round(0.17999999999999994, 2)
+E        +    where 0.17999999999999994 = max(((1 * 1.18) - 1), 0)
+E       Failing test case: test_payable_bill_valid_input(
+E           bill=1,
+E           discount=1,
+E       )
+
+test_salon_booking.py:130: AssertionError
+_________________ test_payable_bill_rejects_negative_discount _________________
+
+    @given(st.integers(0, 1_000_000), st.integers(max_value=-1))
+>   def test_payable_bill_rejects_negative_discount(bill, discount):
+                   ^^^
+
+test_salon_booking.py:135: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+bill = 0, discount = -1
+
+    @given(st.integers(0, 1_000_000), st.integers(max_value=-1))
+    def test_payable_bill_rejects_negative_discount(bill, discount):
+>       assert payable_bill(f"{bill}|{discount}") is None
+E       AssertionError: assert 1.0 is None
+E        +  where 1.0 = payable_bill('0|-1')
+E       Failing test case: test_payable_bill_rejects_negative_discount(
+E           bill=0,
+E           discount=-1,
+E       )
+
+test_salon_booking.py:136: AssertionError
+============================== warnings summary ===============================
+C:\Users\sripr\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\pytest_plugin.py:14
+  C:\Users\sripr\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED test_salon_booking.py::test_parse_booking_no_crash - ExceptionGroup: H...
+FAILED test_salon_booking.py::test_parse_booking_output_is_valid - ExceptionG...
+FAILED test_salon_booking.py::test_parse_booking_rejects_out_of_range_minutes
+FAILED test_salon_booking.py::test_duration_average_no_crash - ExceptionGroup...
+FAILED test_salon_booking.py::test_duration_average_output_is_valid - Excepti...
+FAILED test_salon_booking.py::test_duration_average_rejects_non_positive - As...
+FAILED test_salon_booking.py::test_payable_bill_no_crash - ExceptionGroup: Hy...
+FAILED test_salon_booking.py::test_payable_bill_output_is_valid - ExceptionGr...
+FAILED test_salon_booking.py::test_payable_bill_valid_input - assert 0.179999...
+FAILED test_salon_booking.py::test_payable_bill_rejects_negative_discount - A...
+=================== 10 failed, 2 passed, 1 warning in 2.62s ===================
