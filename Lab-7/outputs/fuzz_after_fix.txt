@@ -1,0 +1,18 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.0, pytest-9.2.0, pluggy-1.7.0
+rootdir: D:\College\sem 5\SE_mini_project\Lab-7
+plugins: anyio-4.14.2, hypothesis-6.170.15
+collected 12 items
+
+test_salon_booking.py ............                                       [100%]
+
+============================== warnings summary ===============================
+C:\Users\sripr\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\pytest_plugin.py:14
+  C:\Users\sripr\AppData\Local\Programs\Python\Python312\Lib\site-packages\anyio\pytest_plugin.py:14: PytestRemovedIn10Warning: _pytest.python.CallSpec2 has been renamed to CallSpec.
+  The CallSpec2 alias will be removed in pytest 10.
+  Update imports to use CallSpec instead.
+  See https://docs.pytest.org/en/stable/deprecations.html#callspec2-renamed
+    from _pytest.python import CallSpec2
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 12 passed, 1 warning in 3.45s ========================
