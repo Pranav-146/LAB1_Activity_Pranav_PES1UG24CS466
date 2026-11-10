@@ -25,8 +25,9 @@
 | **Deliverable 1: Epics & Backlog PDF** | [`Lab_2_Agile_Epics_and_Backlog.pdf`](./Lab_2_Agile_Epics_and_Backlog.pdf) | Comprehensive PDF detailing all 3 Epics, 7 User Stories, acceptance criteria, story point rationales, and backlog screenshots. |
 | **Deliverable 2: Burndown & Reflection PDF** | [`Lab_2_Burndown_and_Sprint_Reflection.pdf`](./Lab_2_Burndown_and_Sprint_Reflection.pdf) | Formal PDF with Burndown chart analysis, active sprint boards, and answers to the 4 reflection questions. |
 | **Consolidated Lab 2 Report** | [`Lab_2_Complete_Agile_Simulation_Report.pdf`](./Lab_2_Complete_Agile_Simulation_Report.pdf) | Complete 4-page report combining all deliverables and screenshots in a single submission-ready PDF. |
-| **Backlog & Epics Screenshot** | [`jira_backlog_view.png`](./jira_backlog_view.png) | Jira Agile product backlog showing Epics panel, Sprint 1, Sprint 2, Story Point badges, and priority tags. |
-| **Burndown Chart Screenshot** | [`jira_burndown_chart_view.png`](./jira_burndown_chart_view.png) | Jira Burndown Chart for Sprint 1 showing remaining story points vs. ideal linear guideline. |
+| **Epics & User Stories Screenshot** | [`jira_epics_and_stories.png`](./jira_epics_and_stories.png) | Jira work item search showing the 3 Epics (SCRUM-5 to 7) and 7 User Stories (SCRUM-8 to 14). |
+| **Sprint 1 Burndown + Story Points** | [`jira_burndown_sprint1.png`](./jira_burndown_sprint1.png) | Jira Sprint burndown chart for Sprint 1 with its completed work items and story points (18 SP). |
+| **Sprint 2 Burndown + Story Points** | [`jira_burndown_sprint2.png`](./jira_burndown_sprint2.png) | Jira Sprint burndown chart for Sprint 2 with its completed work items and story points (13 SP). |
 | **Sprint 1 Active Board** | [`Screenshot (569).png`](./Screenshot%20(569).png) | Authentic Jira board during Sprint 1 execution across To Do, In Progress, and Done. |
 | **Sprint 2 Board (Start)** | [`Screenshot (573).png`](./Screenshot%20(573).png) | Sprint 2 started with 3 tasks populated in To Do. |
 | **Sprint 2 Board (In Progress)** | [`Screenshot (574).png`](./Screenshot%20(574).png) | Sprint 2 mid-sprint execution. |
@@ -80,14 +81,16 @@
 
 ## 📈 Burndown Chart & Sprint Progress
 
-![Jira Burndown Chart](./jira_burndown_chart_view.png)
+![Sprint 1 burndown](./jira_burndown_sprint1.png)
 
-### Sprint 1 Burndown Progression (18 SP Committed $\rightarrow$ 0 SP Remaining)
-- **Day 0 (01 Sep):** Sprint 1 Planning finalized. 18 Story Points committed.
-- **Day 4 (04 Sep):** `SCRUM-8` (Manage Preference Tags) completed $\rightarrow$ 13 SP remaining.
-- **Day 6 (06 Sep):** `SCRUM-9` (Swap Box Items) completed $\rightarrow$ 8 SP remaining.
-- **Day 7 (07 Sep):** `SCRUM-10` (Pause Delivery) completed $\rightarrow$ 3 SP remaining.
-- **Day 8 (08 Sep):** `SCRUM-11` (Skip Billing Cycle) completed $\rightarrow$ **0 SP remaining (100% Complete)**.
+![Sprint 2 burndown](./jira_burndown_sprint2.png)
+
+These are real captures from Jira's Sprint burndown chart report. Each page was scrolled and the captures stitched together; the empty sections between the chart and the completed work items table are left out.
+
+### What the real Jira reports show
+- **Sprint 1** (6 to 20 Sep 2026): 4 stories, 18 story points. All four were moved to Done on 7 Sep, so the remaining work line drops to 0 on the second day.
+- **Sprint 2** (7 Sep to 4 Oct 2026): 3 stories, 13 story points, all moved to Done on 7 Sep, the day the sprint started.
+- Neither sprint had scope changes, and no work items were left incomplete.
 
 ---
 

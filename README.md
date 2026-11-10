@@ -70,8 +70,9 @@ Functional requirements from Lab 1 were decomposed into 3 major Agile Epics and 
 | **Deliverable 1: Epics PDF** | [`Lab2/Lab_2_Agile_Epics_and_Backlog.pdf`](./Lab2/Lab_2_Agile_Epics_and_Backlog.pdf) | Formal Epics catalog, 7 user stories, acceptance criteria, story point rationales, and backlog screenshots. |
 | **Deliverable 2: Burndown PDF** | [`Lab2/Lab_2_Burndown_and_Sprint_Reflection.pdf`](./Lab2/Lab_2_Burndown_and_Sprint_Reflection.pdf) | Burndown Chart report, active sprint boards, and answers to the 4 reflection questions. |
 | **Complete Lab 2 Report** | [`Lab2/Lab_2_Complete_Agile_Simulation_Report.pdf`](./Lab2/Lab_2_Complete_Agile_Simulation_Report.pdf) | Consolidated 4-page submission report containing all Lab 2 deliverables. |
-| **Jira Backlog View** | [`Lab2/jira_backlog_view.png`](./Lab2/jira_backlog_view.png) | Backlog view showing Epics panel, Sprint 1 (18 SP), Sprint 2 (13 SP), and priority indicators. |
-| **Jira Burndown Chart** | [`Lab2/jira_burndown_chart_view.png`](./Lab2/jira_burndown_chart_view.png) | Sprint 1 Burndown chart tracking remaining story points vs. linear guideline. |
+| **Jira Epics & Stories** | [`Lab2/jira_epics_and_stories.png`](./Lab2/jira_epics_and_stories.png) | Jira work item search showing the 3 Epics and 7 User Stories. |
+| **Sprint 1 Burndown** | [`Lab2/jira_burndown_sprint1.png`](./Lab2/jira_burndown_sprint1.png) | Jira burndown chart and completed work items with story points (18 SP). |
+| **Sprint 2 Burndown** | [`Lab2/jira_burndown_sprint2.png`](./Lab2/jira_burndown_sprint2.png) | Jira burndown chart and completed work items with story points (13 SP). |
 | **Sprint 1 Active Board** | [`Lab2/Screenshot (569).png`](./Lab2/Screenshot%20(569).png) | Active Sprint 1 board simulation in Jira (`sripranavbuduguru.atlassian.net`). |
 | **Sprint 2 Board (Start)** | [`Lab2/Screenshot (573).png`](./Lab2/Screenshot%20(573).png) | Sprint 2 started with 3 tasks in To Do. |
 | **Sprint 2 Board (In Progress)** | [`Lab2/Screenshot (574).png`](./Lab2/Screenshot%20(574).png) | Sprint 2 progression. |
@@ -90,7 +91,7 @@ Functional requirements from Lab 1 were decomposed into 3 major Agile Epics and 
   - `SCRUM-14`: Renewal Reminder Notifications (3 SP, Medium, FR-005)
 
 ### Burndown Chart Preview
-![Jira Burndown Chart Preview](./Lab2/jira_burndown_chart_view.png)
+![Sprint 1 Burndown](./Lab2/jira_burndown_sprint1.png)
 
 ### Summary Answers to Reflection Questions
 1. **Did your estimations reflect the actual effort?** Yes; 5-point stories (SCRUM-9, SCRUM-13) had complex temporal boundaries (48h cutoff, 10,000 label batch generation in <60s), while 3-point stories (SCRUM-11, SCRUM-14) had simple states.
@@ -181,13 +182,13 @@ Used Hypothesis to fuzz the three functions in `salon_booking.py` from the same 
 │       ├── Lab_2_Agile_Epics_and_Backlog.pdf
 │       ├── Lab_2_Burndown_and_Sprint_Reflection.pdf
 │       ├── Lab_2_Complete_Agile_Simulation_Report.pdf
-│       ├── jira_backlog_view.png                # Jira Backlog Screenshot
-│       ├── jira_burndown_chart_view.png         # Jira Burndown Chart Screenshot
+│       ├── jira_epics_and_stories.png           # Jira Epics & Stories
+│       ├── jira_burndown_sprint1.png            # Jira Sprint 1 Burndown + story points
+│       ├── jira_burndown_sprint2.png            # Jira Sprint 2 Burndown + story points
 │       ├── Screenshot (569).png                 # Sprint 1 Active Board
 │       ├── Screenshot (573).png                 # Sprint 2 Start Board
 │       ├── Screenshot (574).png                 # Sprint 2 In Progress Board
-│       ├── Screenshot (575).png                 # Sprint 2 Completed Board
-│       └── sprint1_burndown_chart.png
+│       └── Screenshot (575).png                 # Sprint 2 Completed Board
 │
 └── Lab 3 Files (Component Modelling & Architecture)
     ├── Lab_3_Component_Diagram.png              # Lab 3 Deliverable 1: Component Diagram PNG
